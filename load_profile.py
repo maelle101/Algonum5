@@ -6,7 +6,7 @@ import matplotlib.pyplot as ma;
 # Airfoil : load profile of a wing
 #
 # Reads a file whose lines contain coordinates of points,
-# separated by an empty line.
+# separated by an empty space.
 # Every line not containing a couple of floats is discarded. 
 # Returns a couple constitued of the list of points of the
 # extrados and the intrados. 
