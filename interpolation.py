@@ -25,17 +25,21 @@ def splint(X,Y,x,y2):
     kmin = 0
     kmax = n - 1
     while(kmax - kmin > 1):
-        k=n/2
+        #print("kmax =" + str(kmax))
+        #print("kmin =" + str(kmin))
+        k=(kmax-kmin)//2
         if(X[k] > x):
             kmax = k
         else :
             kmin = k
-    h=xa(khi)-xa(klo)
+    h = (X[kmin] - X[kmax])
     if (h == 0):
         print("erreur in X list")
     a = (X[kmax] - x) /h
+    #print("a = " +str(a))
     b = (x - X[kmin]) /h
-    y = a*Y[kmin] + b*Y[kmax] + ((a**3-a) * y2a[kmax] + (b**3-b) * y2a[kmax])*(h**2)/6.
+    #print(b)
+    y = a*Y[kmin] + b*Y[kmax] + ((a**3 - a) * y2[kmax] + (b**3 - b) * y2[kmax])*(h**2)/6.
     return y
 
 y2intra = spline(ix,iy)

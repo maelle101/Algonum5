@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from math import *
 
 from curve_length import *
+from interpolation import *
 
 size=1000
 pmap=np.zeros([size,size])
@@ -11,11 +12,11 @@ lstep=0.05
 
 from random import randrange
 
-def intrados(x):
-    return x*(x-1)*0.5
+#def intrados(x):
+#    return x*(x-1)*0.5
 
-def extrados(x):
-    return x*(1-x)*0.7
+#def extrados(x):
+#    return x*(1-x)*0.7
 
 
 fex=[]
@@ -28,13 +29,10 @@ hmin=min(fin)
 
 def exdos(x) :
     return extrados(x)
-    #return fex[floor(x*size)]
 
 def indos(x) :
     return intrados(x)
-    #return fin[floor(x*size)]
 
-#def pratio(lmbda, ft) :
 
 nl=int(1/lstep)
 

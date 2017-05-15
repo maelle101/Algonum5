@@ -34,6 +34,6 @@ def load_foil(file):
     return(ex,ey,ix,iy)
 
 
-(ex,ey,ix,iy) = load_foil("datas.dat")
-ma.plot(ex,ey)#,ix,iy)
-ma.show()
+#(ex,ey,ix,iy) = load_foil("datas.dat")
+#ma.plot(ex,ey)#,ix,iy)
+#ma.show()
