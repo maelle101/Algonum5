@@ -26,8 +26,6 @@ def load_foil(file):
             elif not(rintra):
                 rintra = True
             continue;
-        print("rextra",rextra)
-        print("rintra",rintra)
         if (m != None) and rheader and not(rextra) and not(rintra):
             dim = np.array(map(lambda t: float(t), m.groups()))
             continue
