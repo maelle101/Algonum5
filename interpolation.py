@@ -33,20 +33,20 @@ def splint(X,Y,x,y2):
     #print("X[kmin]",X[kmin])
     #print("X[kmax]",X[kmax])
     while(kmax - kmin > 1):
-        #print("kmax =" + str(kmax))
-        #print("kmin =" + str(kmin))
+        print("kmax =" + str(kmax))
+        print("kmin =" + str(kmin))
         k= (kmax+kmin)//2
-        #print("X[k] = ", X[k])
-        #print("k = ",k)
-        #print("x = ",x)
+        print("X[k] = ", X[k])
+        print("k = ",k)
+        print("x = ",x)
         
-        if(X[k] >= x):
+        if(X[k] > x):
             #print("dans le if")
             kmax = k
         else :
             #print("dans le else")
-            kmin = k+1
-        #print("  ")
+            kmin = k
+    print("  ")
     h = (X[kmin] - X[kmax])
     if (h == 0):
         print("erreur in X list")
@@ -70,5 +70,5 @@ def extrados(x):
     return splint(ex,ey,x,y2extra)
 
 #print("avant splint intra pour 0,5")
-splint(ix,iy,0.5,y2intra)
+print(splint(ix,iy,0.5,y2intra))
 #print("apres splint intra pour 0,5")
