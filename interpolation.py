@@ -1,7 +1,7 @@
 from load_profile import load_foil
 
 #list of data point (e for extardos and i for intrados)
-(dim,ex,ey,ix,iy) = load_foil("boe103.dat")
+(dim,ix,iy,ex,ey) = load_foil("boe103.dat")
 #print("ex = ",ex)
 #print("ey = ",ey)
 #print("ix = ",ix)
