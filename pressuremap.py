@@ -5,19 +5,9 @@ from math import *
 from curve_length import *
 from interpolation import *
 
-size=1000
-pmap=np.zeros([size,size])
+size=500 #number of point to compute
+pmap=np.zeros([size,size]) #
 lstep=0.05
-
-'''
-from random import randrange
-
-def intrados(x):
-    return x*(x-1)*0.5
-
-def extrados(x):
-    return x*(1-x)*0.7
-'''
 
 fex=[]
 fin=[]
@@ -33,7 +23,6 @@ def exdos(rx) :
     if rx>=size :
         rx=size-1
     return fex[rx]
-    #return extrados(x)
 
 def indos(rx) :
     if rx<0 :
@@ -41,8 +30,6 @@ def indos(rx) :
     if rx>=size :
         rx=size-1
     return fin[rx]
-    #return intrados(x)
-
 
 nl=int(1/lstep)
 
@@ -77,8 +64,6 @@ for ry in range(size) :
             pmap[ry][rx] = pmap[0][0]
 
                     
-plt.imshow(pmap,cmap="hot")#,interpolation="nearest")
+plt.imshow(pmap,cmap="hot")
 plt.show()
 
-#if __name__ == "__main__" :
-    

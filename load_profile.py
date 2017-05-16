@@ -36,17 +36,7 @@ def load_foil(file):
             intra.append(m.groups())
             continue;
     ex = np.array(list(map(lambda t: float(t[0]),extra)))
-    ey = np.array(list(map(lambda t: float(t[1]),extra)))
+    ey = np.array(list(map(lambda t: -float(t[1]),extra)))
     ix = np.array(list(map(lambda t: float(t[0]),intra)))
-    iy = np.array(list(map(lambda t: float(t[1]),intra)))
+    iy = np.array(list(map(lambda t: -float(t[1]),intra)))
     return(dim,ex,ey,ix,iy)
-
-#(dim,ex,ey,ix,iy) = load_foil("boe103.dat")
-
-#print(dim)
-#print(ex)
-#print(ey)
-#print(ix)
-#print(iy)
-
-#print(len(ex))

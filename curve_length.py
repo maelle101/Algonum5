@@ -33,14 +33,3 @@ def length_curve(f, a, b, integration_method=trapeze, precision_prime=0.01, step
                     b,
                     step,
                     lambda x:np.sqrt(1 + prime(f, x, precision_prime)**2))
-
-
-#def tests():
-#    '''tests the functions above'''
-#    print("error on computed length of the curve of x->x between 0 and 10 : ", end='')
-#    print(length_curve(lambda x:x, 0, 10, integration_method=midpoint) - (np.sqrt(2)*10))
-#    print("error on computed length of the curve of x->x² between 0 and 10 : ", end='')
-#    print(length_curve(lambda x:x*x, 0, 10, integration_method=simpson) - (np.sqrt(401)*5 + log(np.sqrt(401) + 20)/4))
-#
-#if __name__ == "__main__" :
-#    tests()
