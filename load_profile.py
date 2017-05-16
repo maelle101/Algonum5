@@ -1,3 +1,4 @@
+
 import numpy as np;
 import re; # regexp
 import matplotlib.pyplot as ma;
@@ -6,7 +7,7 @@ import matplotlib.pyplot as ma;
 # Airfoil : load profile of a wing
 #
 # Reads a file whose lines contain coordinates of points,
-# separated by an empty space.
+# separated by an empty line.
 # Every line not containing a couple of floats is discarded. 
 # Returns a couple constitued of the list of points of the
 # extrados and the intrados. 
@@ -14,26 +15,40 @@ def load_foil(file):
     f = open(file, 'r')
     matchline = lambda line: re.match(r"\s*([\d\.-]+)\s*([\d\.-]+)", line)
     extra  = [];    intra = []
-    rextra = False; rintra = False
+    rextra = False; rintra = False; rheader = False;
     for line in f:
         m = matchline(line)
-        if (m != None) and not(rextra):
-            rextra = True
-        if (m != None) and rextra and not(rintra):
+        if (m == None):
+            if not(rheader):
+                rheader = True
+            elif not(rextra):
+                rextra = True
+            elif not(rintra):
+                rintra = True
+            continue;
+        print("rextra",rextra)
+        print("rintra",rintra)
+        if (m != None) and rheader and not(rextra) and not(rintra):
+            dim = np.array(map(lambda t: float(t), m.groups()))
+            continue
+        if (m != None) and rheader and rextra and not(rintra):
             extra.append(m.groups())
-        if (m != None) and rextra and rintra:
+            continue;
+        if (m != None) and rheader and rextra and rintra:
             intra.append(m.groups())
-        if (m == None) and rextra:
-            rintra = True
+            continue;
+    ex = np.array(list(map(lambda t: float(t[0]),extra)))
+    ey = np.array(list(map(lambda t: float(t[1]),extra)))
+    ix = np.array(list(map(lambda t: float(t[0]),intra)))
+    iy = np.array(list(map(lambda t: float(t[1]),intra)))
+    return(dim,ex,ey,ix,iy)
 
-    #print("extra = ", extra)
-    ex = np.array(np.reshape(extra, 2*len(extra)), dtype=np.float64)[0::2]
-    ey = np.array(np.reshape(extra, 2*len(extra)), dtype=np.float64)[1::2]
-    ix = np.array(np.reshape(intra, 2*len(intra)), dtype=np.float64)[0::2]
-    iy = np.array(np.reshape(intra, 2*len(intra)), dtype=np.float64)[1::2]
-    return(ex,ey,ix,iy)
+#(dim,ex,ey,ix,iy) = load_foil("boe103.dat")
 
+#print(dim)
+#print(ex)
+#print(ey)
+#print(ix)
+#print(iy)
 
-#(ex,ey,ix,iy) = load_foil("datas.dat")
-#ma.plot(ex,ey)#,ix,iy)
-#ma.show()
+#print(len(ex))
