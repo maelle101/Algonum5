@@ -1,7 +1,7 @@
 from load_profile import load_foil
 
 #list of data point (e for extardos and i for intrados)
-(dim,ex,ey,ix,iy) = load_foil("boe103.dat")
+(dim,ex,ey,ix,iy) = load_foil("c5a.dat")
 
 
 def spline(x,y):
