@@ -33,3 +33,41 @@ def length_curve(f, a, b, integration_method=trapeze, precision_prime=0.01, step
                     b,
                     step,
                     lambda x:np.sqrt(1 + prime(f, x, precision_prime)**2))
+
+
+def rerror_figure():
+    nb = 50
+    f2 = lambda x:x**3 
+    f2_i = lambda x:(x**4)/4.
+    b = range(1,nb+1)
+    a = 0
+    dx = 0.01
+
+    f2_integ = []
+    trapeze_error = []
+    for i in range(0,nb):
+        f2_integ.append(f2_i(b[i]))
+        trapeze_error.append(abs(f2_integ[i] - integral(trapeze, a, b[i], dx, f2))/f2_integ[i])
+    plt.plot(b, trapeze_error, label="trapeze")
+
+    midpoint_error = []
+    for i in range(0,nb):
+        midpoint_error.append(abs(f2_integ[i] - integral(midpoint, a, b[i], dx, f2))/f2_integ[i])
+    plt.plot(b, midpoint_error, label="midpoint")
+
+    simpson_error = []
+    for i in range(0,nb):
+        simpson_error.append(abs(f2_integ[i] - integral(simpson, a, b[i], dx, f2))/f2_integ[i])
+    plt.plot(b, simpson_error, label="simpson")
+  
+    plt.xlabel("x")
+    plt.ylabel("rerror")
+    plt.legend()
+    plt.title("Relative Error of the differents Integration Methods (x->x^3)")
+
+    plt.show()
+
+
+
+if __name__ == '__main__':
+    rerror_figure()
